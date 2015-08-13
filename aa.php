@@ -1,0 +1,3 @@
+﻿<?php
+echo '{"coord":{"lon":121.53,"lat":25.05},"weather":[{"id":520,"main":"Rain","description":"light intensity shower rain","icon":"09d"}],"base":"stations","main":{"temp":304.28,"pressure":1007,"humidity":83,"temp_min":301.15,"temp_max":305.93},"visibility":5000,"wind":{"speed":2.6,"deg":80},"clouds":{"all":75},"dt":1439367533,"sys":{"type":1,"id":7479,"message":0.014,"country":"TW","sunrise":1439328377,"sunset":1439375478},"id":1668341,"name":"Taipei","cod":200}';
+?>

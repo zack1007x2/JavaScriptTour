@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+
+<h1>My First Web Page</h1>
+<p id = "demo1">My first paragraph.</p>
+<p id = "demo2">My first paragraph.</p>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+	//custom cityinfo object
+	function myCity (base,cod,id,weatherObj,visibility,name) {
+		this.mName = name;
+		this.base = base;
+		this.cod = cod;
+		this.weatherObj = weatherObj;
+		this.mVisibility = visibility;
+	}
+
+	function getWeather(city ,callback){
+		//for get data
+		var mCity;
+		if(typeof(city)!="string"){
+			mCity = {q:"Taipei"};
+		}else{
+			mCity = {q:city};
+		}
+
+		var url = 'http://api.openweathermap.org/data/2.5/weather?';
+		$.getJSON(url,mCity,function(jsonData){
+		    var cct = new myCity(jsonData.base,jsonData.cod,jsonData.id,jsonData.main,jsonData.visibility,jsonData.name);
+		    
+		    // $.each(neededData, function (i, fb) {
+		    //     // console.log(neededData[i]);
+		    //     // console.log(typeof(neededData[i]));
+		    //     if(typeof(neededData[i]) != "object"){
+		    //     	console.log(i + " : " + neededData[i]);
+		    //     }else{
+		    //     	//is Json Array
+		    //     	smallData = neededData[i];
+		    //     	$.each(smallData, function (i, fb) {
+		    //     		console.log("       " + i + " : " + smallData[i]);
+		    //     	});
+		    //     }
+	    	// });
+			if (typeof callback === "function") {
+	        	callback(cct);
+	    	}
+		}); 
+		
+	}
+
+	function upDateUI(city){
+		if(city instanceof myCity){
+			var theCity = city;
+			// DOM 
+			document.getElementById("demo1").innerHTML = "City Name = "+theCity.mName;
+			document.getElementById("demo2").innerHTML = "City temp = "+theCity.weatherObj.temp;
+		}
+	}
+</script>
+<script type="text/javascript">
+	getWeather("Taipei",upDateUI);
+</script>
+
+
+</body>
+</html> 

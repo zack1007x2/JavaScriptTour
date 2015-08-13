@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<h1>My First Web Page</h1>
+<p id = "demo1">My first paragraph.</p>
+<p id = "demo2">My first paragraph.</p>
+
+<script type="text/javascript">
+	// var setup = function(){
+	// 	//closure
+	// 	var num = 2;
+	// 	alert(1);
+	// 	return function(){
+	// 		alert(num);
+	// 		num +=2;
+	// 	};
+	// };
+
+	// var my = setup();
+	// //although u got the function 
+	// //it won't start until u excute it
+	// my();
+	// my();
+	// my();
+	// my();
+
+
+
+	var Hello = function(){
+		alert("Hello");
+		Hello = function(){
+			alert("Hi Hello");
+		};
+	};
+
+	//第一次執行初始化內容
+	Hello();
+	//執行完後 var Hello被覆寫function 因此往後都是第二種function 被執行
+	Hello();
+	Hello();
+	Hello();
+	Hello();
+	Hello();//WTF
+
+
+
+</script>
+
+
+
+</body>
+</html> 
